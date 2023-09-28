@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas
 
@@ -9,8 +8,7 @@ from bokeh.models import Range1d, Circle, MultiLine
 from bokeh.models.glyphs import Text
 from bokeh.plotting import figure
 from bokeh.plotting import from_networkx
-from networkx.drawing.nx_agraph import pygraphviz_layout
-from networkx.drawing.layout import circular_layout
+from networkx.drawing.nx_agraph import pygraphviz_layout\
 from networkx import nx_agraph
 
 def get_data():
@@ -72,19 +70,15 @@ def plot_network_matplotlib():
 
     A = nx_agraph.to_agraph(G)
 
-    #A.node_attr["shape"] = "circle"
     A.node_attr["fixedsize"] = "true"
     A.node_attr["fontsize"] = "22"
     A.node_attr["fontname"] = "Arial Bold"
     A.node_attr["style"] = "filled"
     A.node_attr["fillcolor"] = "skyblue"
     A.graph_attr["outputorder"] = "edgesfirst"
-    #A.graph_attr["label"] = "display_name"
-    #A.graph_attr["ratio"] = "1.0"
     A.graph_attr["ratio"] = "0.61"
 
     A.layout(prog="circo", args='-Gmindist=1')
-             #args='-Goverlap=prism -Goverlap_scaling=5 -Goneblock="true"')
 
     for n in A.nodes():
         n.attr["width"] = 2
@@ -100,23 +94,7 @@ def plot_network_matplotlib():
         e.attr["headclip"] = "false"
         e.attr["tailclip"] = "false"
 
-
-
     A.draw('/tmp/test.png')
-
-           #args="-Gsize=10,10\!")
-    # make the circle big enought to fit the labels
-    #plt.figure(figsize=(8, 8))
-    # draw the nodes and the edges (all)
-
-    #networkx.draw(G, pos, node_size=2500, node_color="skyblue", edgelist=[])
-    #networkx.draw_networkx_labels(G, pos, font_weight="bold", font_size=7)
-
-    # set edge linewidth to weight
-    #edge_width = [d["weight"] for (u, v, d) in G.edges(data=True)]
-    #networkx.draw_networkx_edges(G, pos, width=edge_width, alpha=0.5)
-
-    #plt.show()
 
 def plot_network():
     G = create_network()
