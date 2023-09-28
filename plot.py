@@ -77,7 +77,7 @@ def create_network():
     return G
 
 
-def plot_network_matplotlib():
+def plot_network_static():
     G = create_network()
 
     A = nx_agraph.to_agraph(G)
@@ -108,7 +108,7 @@ def plot_network_matplotlib():
     A.draw("/tmp/test.png")
 
 
-def plot_network():
+def plot_network_interactive():
     G = create_network()
 
     z = networkx.convert_node_labels_to_integers(G, label_attribute="old_name")
